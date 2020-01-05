@@ -4,10 +4,14 @@ import Gif from './gif.jsx';
 import GifList from './gif_list.jsx';
 import giphy from 'giphy-api';
 
+
+//Gif and GifList need prop bc characterized by id and array respectively. 
+//search bar 
 class App extends Component {
     constructor(props){
         super(props);
 
+        // initial state
         this.state={
             gifs:[],
             selectedGifId: "a93jwI0wkWTQs",
