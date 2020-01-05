@@ -11,17 +11,10 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-<<<<<<< HEAD
-        // initial state
-        this.state={
-            gifs:[],
-            selectedGifId: "a93jwI0wkWTQs",
-=======
     this.state = {
       gifs: [],
-      selectedGifId: "a93jwI0wkWTQs",
+      selectedGifId: null, //"a93jwI0wkWTQs",
     };
->>>>>>> 4a9285a7b905933e78fb944752372a9cefed14cc
 
     this.search("homer thinking"); // the initial category of what the api will be searching for. can put anything
   }
@@ -33,7 +26,6 @@ class App extends Component {
         q: query,
         rating: 'g'
       }, (error, result) => {
-        console.log(result); // array of objects
         this.setState({
           gifs: result.data
         });
@@ -41,6 +33,14 @@ class App extends Component {
       });
     }
 
+    //change the state of the id of the selected gif
+    selectGif = (id) => {
+      this.setState({
+        selectedGifId: id
+      })
+    }
+
+    
     render () {
       return (
         <div>
@@ -53,7 +53,7 @@ class App extends Component {
             </div>
           </div>
           <div className="right-scene">
-            <GifList gifs={this.state.gifs} />
+            <GifList gifs={this.state.gifs} selectGif={this.selectGif} />
           </div>
         </div>
       );
